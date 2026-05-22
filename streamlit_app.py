@@ -9,3 +9,4 @@ import streamlit as st
 with st.container():
     st.write("Text inside the container")
     st.button("A button inside the container")
+streamlit run your_script.py
