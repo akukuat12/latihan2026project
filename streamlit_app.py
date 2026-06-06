@@ -1,83 +1,146 @@
 import streamlit as st
+import base64
 
-# Warna tema
-warna = st.sidebar.selectbox(
-    "Pilih Warna Tema",
-    ["Biru", "Hijau", "Ungu", "Merah"]
+def get_base64(file):
+    with open(file, "rb") as f:
+        return base64.b64encode(f.read()).decode()
+
+bg = get_base64("background.jpg")
+
+st.markdown(
+    f"""
+    <style>
+    .stApp {{
+        background-image: url("data:image/jpg;base64,{bg}");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }}
+    </style>
+    """,
+    unsafe_allow_html=True
 )
 
-if warna == "Biru":
-    bg_color = "#D6EAF8"
-elif warna == "Hijau":
-    bg_color = "#D5F5E3"
-elif warna == "Ungu":
-    bg_color = "#E8DAEF"
-else:
-    bg_color = "#FADBD8"
 
-st.markdown(f"""
-<style>
-.stApp {{
-background-color: {bg_color};
-}}
-</style>
-""", unsafe_allow_html=True)
+# Data Ar unsur
+data_ar = {
+"H": 1,
+"C": 12,
+"N": 14,
+"O": 16,
+"Na": 23,
+"Mg": 24,
+"Al": 27,
+"Si": 28,
+"P": 31,
+"S": 32,
+"Cl": 35.5,
+"K": 39,
+"Ca": 40,
+"Fe": 56,
+"Cu": 63.5,
+"Zn": 65
+}
+
+st.set_page_config(page_title="ChemBuddy", page_icon="🧪")
+
+st.title("🧪 ChemBuddy")
+st.subheader("Kalkulator Kimia Digital")
+
 menu = st.sidebar.selectbox(
-    "Pilih Menu",
+"Pilih Menu",
+["Normalitas", "Molaritas", "BE", "BM", "Ar", "Konversi Suhu", "PPM"]
+)
+
+# NORMALITAS
+
+if menu == "Normalitas":
+    gram = st.number_input("Massa zat (gram)", min_value=0.0)
+    be = st.number_input("Berat Ekivalen (BE)", min_value=0.0)
+    volume = st.number_input("Volume larutan (mL)", min_value=0.0)
+
+if st.button("Hitung Normalitas"):
+    hasil = (gram / be) / (volume / 1000)
+    st.success(f"Normalitas = {hasil:.4f} N")
+
+# MOLARITAS
+
+elif menu == "Molaritas":
+    gram = st.number_input("Massa zat (gram)", min_value=0.0)
+    bm = st.number_input("Berat Molekul (BM)", min_value=0.0)
+    volume = st.number_input("Volume larutan (mL)", min_value=0.0)
+
+if st.button("Hitung Molaritas"):
+    hasil = (gram / bm) / (volume / 1000)
+    st.success(f"Molaritas = {hasil:.4f} M")
+
+# BM
+
+elif menu == "BM":
+    unsur = st.selectbox("Pilih unsur", list(data_ar.keys()))
+    jumlah = st.number_input("Jumlah atom", min_value=1, step=1)
+
+if st.button("Hitung BM"):
+    hasil = data_ar[unsur] * jumlah
+    st.success(f"BM = {hasil}")
+
+# AR
+
+elif menu == "Ar":
+    unsur = st.selectbox("Pilih unsur", list(data_ar.keys()))
+    st.info(f"Ar {unsur} = {data_ar[unsur]}")
+
+# PPM
+
+elif menu == "PPM":
+    massa = st.number_input("Massa zat terlarut (mg)", min_value=0.0)
+    volume = st.number_input("Volume larutan (L)", min_value=0.0)
+
+if st.button("Hitung PPM"):
+    hasil = massa / volume
+    st.success(f"PPM = {hasil:.4f}")
+
+# BE
+
+elif menu == "BE":
+    bm = st.number_input("BM Senyawa", min_value=0.0)
+    valensi = st.number_input("Valensi", min_value=1.0)
+
+if st.button("Hitung BE"):
+    hasil = bm / valensi
+    st.success(f"BE = {hasil:.4f}")
+
+# KONVERSI SUHU
+
+elif menu == "Konversi Suhu":
+    jenis = st.selectbox("Konversi",
     [
-        "Normalitas",
-        "Molaritas",
-        "BE",
-        "BM",
-        "Ar",
-        "Konversi Suhu",
-        "PPM",
-        "Materi",
-        "Rumus",
-        "About Us",
-        "Feedback"
+        "Celcius ke Fahrenheit",
+        "Celcius ke Kelvin",
+        "Fahrenheit ke Celcius",
+        "Kelvin ke Celcius"
     ]
 )
 
-elif menu == "Materi":
-    st.header("📚 Materi Kimia")
+suhu = st.number_input("Masukkan suhu")
 
-    st.subheader("Normalitas (N)")
-    st.write("""
-    Normalitas adalah jumlah gram ekivalen zat terlarut
-    dalam setiap liter larutan.
+if st.button("Konversi"):
 
-    Satuan: N (Normal)
-    """)
+    if jenis == "Celcius ke Fahrenheit":
+        hasil = (suhu * 9/5) + 32
+        satuan = "°F"
 
-    st.subheader("Molaritas (M)")
-    st.write("""
-    Molaritas adalah jumlah mol zat terlarut
-    dalam setiap liter larutan.
+    elif jenis == "Celcius ke Kelvin":
+        hasil = suhu + 273.15
+        satuan = "K"
 
-    Satuan: M (Molar)
-    """)
-elif menu == "About Us":
-    st.header("👨‍🔬 About Us")
+    elif jenis == "Fahrenheit ke Celcius":
+        hasil = (suhu - 32) * 5/9
+        satuan = "°C"
 
-    st.write("""
-    ChemBuddy merupakan aplikasi kalkulator kimia digital
-    yang membantu siswa menghitung:
+    else:
+        hasil = suhu - 273.15
+        satuan = "°C"
 
-    - Normalitas
-    - Molaritas
-    - Berat Molekul
-    - Berat Ekivalen
-    - PPM
-    - Konversi Suhu
-
-    Dibuat untuk mendukung pembelajaran kimia yang lebih mudah dan interaktif.
-    """)
-elif menu == "Feedback":
-    st.header("💬 Feedback")
-
-    nama = st.text_input("Nama")
-    saran = st.text_area("Masukkan saran dan kritik")
-
-    if st.button("Kirim Feedback"):
-        st.success("Terima kasih atas feedback yang diberikan!")
+    st.success(f"Hasil = {hasil:.2f} {satuan}")
+      
