@@ -92,7 +92,7 @@ if menu == "Beranda":
     st.markdown("""
 # Selamat Datang di ChemBuddy 🧪
 
-*ChemBuddy* adalah platform pembelajaran yang dirancang untuk membantu mahasiswa, khususnya tingkat pertama, dalam memahami dan menyelesaikan perhitungan dasar pada mata kuliah *Kimia Dasar,Titrimetri,dan **Fisika Dasar*.
+**ChemBuddy** adalah platform pembelajaran yang dirancang untuk membantu mahasiswa, khususnya tingkat pertama, dalam memahami dan menyelesaikan perhitungan dasar pada mata kuliah **Kimia Dasar**,**Titrimetri**,dan **Fisika Dasar**.
 
 Melalui ChemBuddy, pengguna dapat dengan mudah melakukan berbagai konversi dan perhitungan, seperti:
 
@@ -108,7 +108,7 @@ Mata kuliah Kimia Dasar,Titrimetri, dan Fisika Dasar sering menjadi tantangan ba
 
 Dengan fitur yang sederhana dan mudah digunakan, ChemBuddy diharapkan dapat menjadi teman belajar yang membantu mahasiswa meningkatkan pemahaman konsep serta mengurangi kesalahan dalam perhitungan.
 
-> *Belajar lebih mudah, hitung lebih cepat, bersama ChemBuddy. 🧪✨*
+> **Belajar lebih mudah, hitung lebih cepat, bersama ChemBuddy. 🧪✨**
 """)
 
 elif menu == "Normalitas":
@@ -137,13 +137,13 @@ N = \frac{4.9}{49 \times 0.1}
 N = 1\ \text{grek/L}
 ''')
     
-    st.markdown("*Rumus Normalitas:*")
+    st.markdown("**Rumus Normalitas:**")
 
     st.latex(r'''
 N = \frac{gram}{BE \times V(L)}
 ''')
 
-    st.markdown("*Hubungan Normalitas dan Molaritas:*")
+    st.markdown("**Hubungan Normalitas dan Molaritas:**")
 
     st.latex(r'''
 N = M \times a
@@ -191,9 +191,9 @@ M = \frac{5.85\ g}{58.5\ g/mol \times 0.5\ L}
 = 0.2\ mol/L
 ''')
     
-    st.markdown("*Rumus Molaritas:*")
+    st.markdown("**Rumus Molaritas:**")
     
-    st.markdown("*Jika jumlah mol diperoleh dari massa zat:*")
+    st.markdown("**Jika jumlah mol diperoleh dari massa zat:**")
 
     st.latex(r'''
 n = \frac{massa}{BM}
@@ -363,64 +363,64 @@ Satuan suhu yang digunakan bergantung pada skalanya, yaitu °C, K, °F, dan °R.
 
 Rumus Konversi Suhu:""")
 
-    st.write("*Rumus Konversi Suhu:*")
+    st.write("**Rumus Konversi Suhu:**")
 
-    st.markdown("*Celsius (°C) → Fahrenheit (°F)*")
+    st.markdown("**Celsius (°C) → Fahrenheit (°F)**")
     st.latex(r'''
     ^\circ F = \frac{9}{5}(^\circ C) + 32
     ''')
     
-    st.markdown("*Celsius (°C) → Kelvin (K)*")
+    st.markdown("**Celsius (°C) → Kelvin (K)**")
     st.latex(r'''
     K = ^\circ C + 273.15
     ''')
     
-    st.markdown("*Celsius (°C) → Reamur (°R)*")
+    st.markdown("**Celsius (°C) → Reamur (°R)**")
     st.latex(r'''
     ^\circ R = \frac{4}{5}(^\circ C)
     ''')
     
-    st.markdown("*Fahrenheit (°F) → Celsius (°C)*")
+    st.markdown("**Fahrenheit (°F) → Celsius (°C)**")
     st.latex(r'''
     ^\circ C = \frac{5}{9}(^\circ F - 32)
     ''')
     
-    st.markdown("*Fahrenheit (°F) → Kelvin (K)*")
+    st.markdown("**Fahrenheit (°F) → Kelvin (K)**")
     st.latex(r'''
     K = \frac{5}{9}(^\circ F - 32) + 273.15
     ''')
     
-    st.markdown("*Fahrenheit (°F) → Reamur (°R)*")
+    st.markdown("**Fahrenheit (°F) → Reamur (°R)**")
     st.latex(r'''
     ^\circ R = \frac{4}{9}(^\circ F - 32)
     ''')
     
-    st.markdown("*Kelvin (K) → Celsius (°C)*")
+    st.markdown("**Kelvin (K) → Celsius (°C)**")
     st.latex(r'''
     ^\circ C = K - 273.15
     ''')
     
-    st.markdown("*Kelvin (K) → Fahrenheit (°F)*")
+    st.markdown("**Kelvin (K) → Fahrenheit (°F)**")
     st.latex(r'''
     ^\circ F = \frac{9}{5}(K - 273.15) + 32
     ''')
     
-    st.markdown("*Kelvin (K) → Reamur (°R)*")
+    st.markdown("**Kelvin (K) → Reamur (°R)**")
     st.latex(r'''
     ^\circ R = \frac{4}{5}(K - 273.15)
     ''')
     
-    st.markdown("*Reamur (°R) → Celsius (°C)*")
+    st.markdown("**Reamur (°R) → Celsius (°C)**")
     st.latex(r'''
     ^\circ C = \frac{5}{4}(^\circ R)
     ''')
     
-    st.markdown("*Reamur (°R) → Fahrenheit (°F)*")
+    st.markdown("**Reamur (°R) → Fahrenheit (°F)**")
     st.latex(r'''
     ^\circ F = \frac{9}{4}(^\circ R) + 32
     ''')
     
-    st.markdown("*Reamur (°R) → Kelvin (K)*")
+    st.markdown("**Reamur (°R) → Kelvin (K)**")
     st.latex(r'''
     K = \frac{5}{4}(^\circ R) + 273.15
     ''')
@@ -546,11 +546,11 @@ elif menu == "About Us":
 
     st.write("Tim Pengembang ChemBuddy:")
     st.write("""
-    1. Asyifa Fadilla (2460335)
-    2. Muhamad Daffa Alfath (2460425)
-    3. Muhammad Al Fariz (2460425)
-    4. Nadifah Adya Anggita (2460449)
-    5. Ramdan Abdul Azis (2460490)
+    1. *Asyifa Fadilla* (2460335)
+    2. *Muhamad Daffa Alfath* (2460425)
+    3. *Muhammad Al Fariz* (2460425)
+    4. *Nadifah Adya Anggita* (2460449)
+    5. *Ramdan Abdul Azis* (2460490)
 
     Kami percaya bahwa pembelajaran akan menjadi lebih menyenangkan ketika didukung oleh alat yang tepat. Oleh karena itu, melalui ChemBuddy kami berkomitmen untuk menghadirkan platform yang sederhana, bermanfaat, dan mudah digunakan oleh seluruh mahasiswa.
 
@@ -662,5 +662,4 @@ div[data-baseweb="select"] span {
 }
 </style>
 """, unsafe_allow_html=True)
-
       
